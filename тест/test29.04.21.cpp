@@ -1,4 +1,4 @@
-#include<iostream>
+#include<iostream>#include<iostream>
 #include<fstream>
 #include<cstring>
 
@@ -13,7 +13,7 @@ char* deleteWordsWithSymbols(char* str, int len) {
 	for (int i = strlen(str); i > 0; i--) {
 		word[m++] = str[i];
 		if (str[i] = ' ') {
-			if (check_word) {
+			if (checkWord) {
 				for (int i = 0; word[i] != '\0'; i++) {
 					new_line[n++] = word[i];
 				}
@@ -25,7 +25,7 @@ char* deleteWordsWithSymbols(char* str, int len) {
 	}
 }
 
-bool check_word(char* word, int len) {
+bool checkWord(char* word, int len) {
 	for (int i = len; i > 0; i--) {
 		if (!is_alpha((int)word[i]) {
 			return false;
@@ -47,14 +47,14 @@ int main() {
 	cout << " enter the string: " << str << endl;
 	cin >> ch;
 
-	new_line = delete_symbol_from_string(str, ch);
+	new_line = deleteWordsWithSymbols(str, ch);
 	cout << "the string after changes: " << new_line << endl;
 
 	ofstream fout;
 	fout.open("out.txt");
 
 	i = 0;
-	while (new_str[i] != '\0') {
+	while (new_line[i] != '\0') {
 		fout << new_line[i++];
 	}
 
