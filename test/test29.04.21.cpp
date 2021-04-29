@@ -1,30 +1,21 @@
 #include<iostream>
 #include<fstream>
 #include<cstring>
-#define MAX_LEN 100
+
 using namespace std;
 #define SIZE 100
-
-bool check_word(char* word, int len_w) {
-	for (int i = len_w; i > 0; i--) {
-		if (!is_alpha((int)word[i]) {
-			return false;
-		}
-	}
-	return true;
-}
-
-char* delete_words_with_symbols(char* str, int len) {
-	char* new_str = new char[SIZE];
-		char* word = new char[SIZE];
-		int k = 0;
-		int j = 0;
+//task2
+char* deleteWordsWithSymbols(char* str, int len) {
+	char* new_line = new char[SIZE];
+	char* word = new char[SIZE];
+	int n = 0;
+	int m = 0;
 	for (int i = strlen(str); i > 0; i--) {
-		word[j++] = str[i];
+		word[m++] = str[i];
 		if (str[i] = ' ') {
 			if (check_word) {
 				for (int i = 0; word[i] != '\0'; i++) {
-					new_str[k++] = word[i];
+					new_line[n++] = word[i];
 				}
 				i = 0;
 				delete[]word;
@@ -33,88 +24,81 @@ char* delete_words_with_symbols(char* str, int len) {
 		}
 	}
 }
+
+bool check_word(char* word, int len) {
+	for (int i = len; i > 0; i--) {
+		if (!is_alpha((int)word[i]) {
+			return false;
+		}
+	}
+	return true;
+}
 int main() {
-	ifstream fin("string_before.txt");
-	char* str = new char[SIZE];
-	char* new_str = new char[SIZE];
+	ifstream fin("in.txt");
+	char* line = new char[SIZE];
+	char* new_line = new char[SIZE];
 	char ch;
 	int i = 0;
 
 	fin.getline(str, SIZE);
-	/*
-	do {
-		fin >> ch;
-		str[i] = ch;
-		i++;
-	} while (ch != '.');
-	str[i] = '\0';
-	*/
+
 	fin.close();
 
-	cout << "the string before changes: " << str << endl;
-	cout << "what symbol do you want to delete from the string? ";
+	cout << " enter the string: " << str << endl;
 	cin >> ch;
 
-	new_str = delete_symbol_from_string(str, ch);
-	cout << "the string after changes: " << new_str << endl;
+	new_line = delete_symbol_from_string(str, ch);
+	cout << "the string after changes: " << new_line << endl;
 
 	ofstream fout;
-	fout.open("string_after.txt");
+	fout.open("out.txt");
 
 	i = 0;
 	while (new_str[i] != '\0') {
-		fout << new_str[i++];
+		fout << new_line[i++];
 	}
 
 	fout.close();
 	return 0;
 }
 
-////task2
+////task1
 
 using namespace std;
 
-char* inputLine()
-{
-	char* line = new char[MAX_LEN];
-	cout << "Input a string: ";
 
-	cin.getline(line, MAX_LEN);
-	return line;
+bool isNumber(char ch)
+{
+	return (ch > '0' && ch < '9');
 }
 
-bool isNumber(char symbol)
+char* remove(char* str)
 {
-	return (symbol > '0' && symbol < '9');
-}
-
-char* removeNumberRepetitions(char* str)
-{
-	char* newStr = new char[MAX_LEN];
+	char* new_line = new char[SIZE];
 	int j = 0;
-	bool isRepeating;
+	bool repeat;
 
 	for (int i = 0; str[i] != '\0'; i++)
 	{
-		isRepeating = isNumber(str[i]) && (str[i] == str[i - 1]);
+		repeat = isNumber(str[i]) && (str[i] == str[i - 1]);
 
-		if (isRepeating)
+		if (repeat)
 		{
 			continue;
 		}
-		newStr[j++] = str[i];
+		new_line[j++] = str[i];
 	}
 
-	newStr[j] = '\0';
-	return newStr;
+	new_line[j] = '\0';
+	return new_line;
 }
 
 int main1()
 {
-	char* line = new char[MAX_LEN];
-	line = inputLine();
-	cout << removeNumberRepetitions(line) << endl;
+	char* line = new char[SIZE];
+	cout << "Input the string: ";
 
-	system("pause");
+	cin.getline(line, SIZE);
+	cout << remove(line) << endl;
 	return 0;
 }
