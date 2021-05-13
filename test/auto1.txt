@@ -1,0 +1,5 @@
+BMW;1-series;2000;1,8;
+Audi;A1;2020;1,5;
+Ford;Transit;2002;1,1;
+BMW;2-series;1996;3,5;
+Audi;A7;2005;1,7;
